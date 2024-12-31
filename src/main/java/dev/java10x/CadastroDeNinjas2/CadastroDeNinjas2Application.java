@@ -8,6 +8,7 @@ public class CadastroDeNinjas2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CadastroDeNinjas2Application.class, args);
+
 	}
 
 }
