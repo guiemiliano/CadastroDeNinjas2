@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeNinjas2;
+package dev.java10x.CadastroDeNinjas2.Ninjas;
 
 /*
     Para uma tabela no banco de dados preciso sempre de um ID,
@@ -16,18 +16,33 @@ package dev.java10x.CadastroDeNinjas2;
 
  */
 
+import dev.java10x.CadastroDeNinjas2.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
 public class NinjaModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     private String email;
+
     private int idade;
+
+    //@ManyToOne um ninja tem uma única missão
+    //Muitos ninjas para uma missão
+
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") //Foreing Key ou chave estrangeira
+    private MissoesModel missoes;
+
+
 
     public NinjaModel(String nome, String email, int idade) {
         this.nome = nome;

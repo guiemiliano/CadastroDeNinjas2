@@ -1,4 +1,4 @@
-package dev.java10x.CadastroDeNinjas2;
+package dev.java10x.CadastroDeNinjas2.Ninjas;
 
 /*  NinjaController
     Fica entre o banco de dados e o usuário sempre criar uma
