@@ -12,8 +12,9 @@ import jakarta.persistence.PostUpdate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ninjas")
 public class NinjaController {
+
 
     @GetMapping("/boasvindas")
     public String boasVindas(){
@@ -30,13 +31,13 @@ public class NinjaController {
     }
 
     //Mostrar todos os Ninjas(Read)
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public String mostrarTodosOsNinjas(){
-        return "Mostrar todos os ninjas";
+        return "Listar todos os ninjas";
     }
 
     //Procurar ninja por id(Read)
-    @GetMapping("/todosID")
+    @GetMapping("/listarId")
     public String mostrarNinjasPorId(){
         return "Mostrar Ninja por Id";
     }
