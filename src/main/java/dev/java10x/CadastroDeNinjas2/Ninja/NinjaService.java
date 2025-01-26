@@ -9,6 +9,7 @@ package dev.java10x.CadastroDeNinjas2.Ninja;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /*
         É basicamente inicializar um atributo
@@ -27,10 +28,16 @@ public class NinjaService {
     }
 
     //Listar todos os meus ninjas
-
     //Pego tudo que se parece com ninja model e vou colocar em uma lista
     public List<NinjaModel> listarNinjas(){
         return ninjaRepository.findAll();
     }
+
+    //Listar todos os meus ninjas por Id
+    public NinjaModel listarNinjasPorId(Long id){
+        Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
+        return ninjaPorId.orElse(null);
+    }
+
 
 }
