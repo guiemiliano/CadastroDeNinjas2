@@ -1,6 +1,7 @@
 package dev.java10x.CadastroDeNinjas2.Ninja;
 
 /*  NinjaController
+    Controller é a parte mais próxima do usuário.
     Fica entre o banco de dados e o usuário sempre criar uma
     annotation @RestController e @RequestMapping no Spring quando
     for trabalhar com controladores, devo ter um mapa para essas
@@ -11,10 +12,18 @@ package dev.java10x.CadastroDeNinjas2.Ninja;
 import jakarta.persistence.PostUpdate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
 
+    //Injetando NinjaService que contém JPA extendido de NinjaRepository
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
 
     @GetMapping("/boasvindas")
     public String boasVindas(){
@@ -32,8 +41,8 @@ public class NinjaController {
 
     //Mostrar todos os Ninjas(Read)
     @GetMapping("/listar")
-    public String mostrarTodosOsNinjas(){
-        return "Listar todos os ninjas";
+    public List<NinjaModel> listarNinjas(){
+        return ninjaService.listarNinjas();
     }
 
     //Procurar ninja por id(Read)
