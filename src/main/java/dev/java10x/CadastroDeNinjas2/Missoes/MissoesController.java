@@ -7,6 +7,8 @@ package dev.java10x.CadastroDeNinjas2.Missoes;
  */
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 /*
     Essa annotation tem muitas annotations dentro dela, cada uma delas faz algo
     RestController fala que isso é uma rota para nossas API e o RequestMapping vai mapear
@@ -17,15 +19,28 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/missoes")
 public class MissoesController {
 
+    private MissoesService missoesService;
+
+    public MissoesController(MissoesService missoesService){
+        this.missoesService = missoesService;
+    }
+
     //Recebe do usuário
     @PostMapping("/criar")
     public String criarMissao(){
         return "Missão criada com sucesso";
     }
 
+    //Listar
     @GetMapping("/listar")
-    public String listarMissao(){
-        return "Missões listadas com sucesso";
+    public List<MissoesModel> listarMissao(){
+        return missoesService.listarMissoes();
+    }
+
+    //Listar por ID
+    @GetMapping("/listar/{id}")
+    public MissoesModel listarMissaoPorId(@PathVariable Long id){
+        return missoesService.listarMissoesPorId(id);
     }
 
     @PutMapping("/alterar")
